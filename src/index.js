@@ -23,14 +23,14 @@ function onRequest(e) {
    let search = refs.input.value;
 
     if (search.trim() === '') {       
-        clearInfo;
+        clearInfo();
         return;
     }
     fetchCountries(search.trim())
         .then(countries => {
                 if (countries.length > 10) {
          Notify.info('Too many matches found. Please enter a more specific name.');
-                    clearInfo;
+                    clearInfo();
         return;
     }
     if (countries.length > 1  && countries.length <= 10) {
@@ -45,11 +45,11 @@ function onRequest(e) {
         refs.info.innerHTML = cardMarcup.join('');
     }
         }
-            // renderCountries()
+         
         )
         .catch(error => {
             Notify.failure('Oops, there is no country with that name.');
-            clearInfo;
+            clearInfo();
     
  
     return error;
